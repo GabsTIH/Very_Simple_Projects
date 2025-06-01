@@ -1,39 +1,33 @@
 #Tabuada by Gabs
 def menu():
-    Escolha = input('''Qual tipo de tabuada deseja?
+    choose = input('''Qual tipo de tabuada deseja?
                     Digite 1 para tabuadas do 1 a 10
                     Digite 2 para tabuadas da sua escolha
                     ''')
 #Pede ao usuário qual tipo de tabuada ele deseja, se é uma tabuada comum do 1 a 10, ou se deseja fazer uma personalizada
-    if Escolha == "1":
-        tabuadaS()
+    if choose == "1":
+        tabuadaSimples()
     else:
-        tabuadaP()
+        tabuadaPersonalizada()
 #Caso o usuário escolha a tabuada do 1 a 10, o programa executará uma tabela predefinida
 #Caso contrário, executará o programa de tabuada personalizada
 
-def tabuadaS():
+def tabuadaSimples():
+    'Retorna uma lista de tabuada predefinida do 1 ao 10, Exemplo: 1 x 1 = 1, 1 x 2 = 2, ..., 10 x 10 = 100'
     for i in (1,2,3,4,5,6,7,8,9,10):
-        print("Tabuada do", i)
+        print(f"Tabuada do {i}")
         for x in (1,2,3,4,5,6,7,8,9,10):
-            print(i,"x",x, "=", i*x)
+            print(f"{i}x{x}={i*x}")
 
-def tabuadaP():
+def tabuadaPersonalizada():
+    'Permite ao usuário fazer uma tabuada personalizada, colocando o inicio, e o fim'
     escNum = int(input("Digite o número que deseja multiplicar: "))
-    escVorS = input('''Deseja que ele se multiplique somente uma vez, ou várias vezes ?
-                    Digite 1 para uma vez
-                    Digite 2 para múltiplas vezes
-                    ''')
-
-    if escVorS == "1":
-        escNumDos = int(input("Digite o número que deseja multiplicar pelo escolhido anteriormente: "))
-        print(escNum, "x", escNumDos, "=", escNum * escNumDos)
-    elif escVorS == "2":
-        escMin = int(input("Digite de que número a tabuada deve começar: "))
-        escMax = int(input("Agora, digite o número que a tabuada deve terminar: "))
-        sequen = range(escMin, escMax + 1)
-        sequen_list = list(sequen)
-        for i in sequen_list:
-            print(escNum, "x", i, "=", escNum * i)
+    #Pede ao usuário o número que ele deseja que a tabuada seja baseada
+    escMin = int(input("Digite de que número a tabuada deve começar: "))
+    #Pede ao usuário o número em que a tabuada deve começar, e.g. Se o usuário pediu como base o número 5, e o começo dele for 3, a tabuada começara do 5 x 3
+    escMax = int(input("Agora, digite o número que a tabuada deve terminar: "))
+    #Pede ao usuário o número em que a tabuada deve terminar, e.g. Se o usuário pediu como base 5, começo 3, e como máximo 10, a tabuada será do 5 x 3 até o 5 x 10 
+    for i in range(escMin, escMax + 1):
+        print(escNum, "x", i, "=", escNum * i)
 
 menu()
